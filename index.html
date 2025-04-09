@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Birthday Card</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Comic Sans MS', cursive;
+      background: #fdf6f0;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    h1 {
+      text-align: center;
+      margin-top: 50px;
+      font-size: 3rem;
+      color: #ff69b4;
+      animation: float 3s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+
+    .decor {
+      position: absolute;
+      width: 100px;
+      height: 100px;
+      background-size: contain;
+      background-repeat: no-repeat;
+      animation: spin 10s linear infinite;
+    }
+
+    .decor:nth-child(1) {
+      top: 10%;
+      left: 5%;
+      background-image: url('https://i.ibb.co/Wyyd6ZG/balloon.png');
+    }
+    .decor:nth-child(2) {
+      top: 20%;
+      right: 10%;
+      background-image: url('https://i.ibb.co/Wyyd6ZG/balloon.png');
+    }
+    .decor:nth-child(3) {
+      top: 70%;
+      left: 15%;
+      background-image: url('https://i.ibb.co/WPmn4DW/star.png');
+    }
+    .decor:nth-child(4) {
+      top: 60%;
+      right: 10%;
+      background-image: url('https://i.ibb.co/WPmn4DW/star.png');
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0); }
+      100% { transform: rotate(360deg); }
+    }
+
+    .button-container {
+      text-align: center;
+      margin-top: 50px;
+    }
+
+    .btn {
+      padding: 15px 30px;
+      background: #ff69b4;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      font-size: 1.2rem;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+
+    .btn:hover {
+      transform: scale(1.1);
+    }
+
+    /* Popup Styles */
+    .popup {
+      display: none;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) scale(0.5);
+      background: white;
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.3);
+      z-index: 10;
+      text-align: center;
+      max-width: 90%;
+      animation: popupFade 0.5s ease forwards;
+    }
+
+    .popup img {
+      max-width: 100%;
+      border-radius: 10px;
+    }
+
+    .popup p {
+      margin-top: 15px;
+      font-size: 1.2rem;
+      color: #333;
+    }
+
+    @keyframes popupFade {
+      to {
+        transform: translate(-50%, -50%) scale(1);
+      }
+    }
+
+    .overlay {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      z-index: 5;
+    }
+
+    .show {
+      display: block;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>🎉 Happy Birthday 🎉</h1>
+
+  <!-- Decorative Elements -->
+  <div class="decor"></div>
+  <div class="decor"></div>
+  <div class="decor"></div>
+  <div class="decor"></div>
+
+  <!-- Button -->
+  <div class="button-container">
+    <button class="btn" onclick="showPopup()">Click Here</button>
+  </div>
+
+  <!-- Overlay & Popup -->
+  <div class="overlay" id="overlay" onclick="hidePopup()"></div>
+
+  <div class="popup" id="popup">
+    <img src="https://i.ibb.co/vjYgMYy/happy-birthday-cake.jpg" alt="Birthday Cake" />
+    <p>Wishing you a day filled with love, laughter, and unforgettable moments! 🎂🎈</p>
+  </div>
+
+  <script>
+    function showPopup() {
+      document.getElementById('overlay').classList.add('show');
+      document.getElementById('popup').classList.add('show');
+    }
+
+    function hidePopup() {
+      document.getElementById('overlay').classList.remove('show');
+      document.getElementById('popup').classList.remove('show');
+    }
+  </script>
+</body>
+</html>
